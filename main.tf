@@ -6,21 +6,23 @@ resource "helm_release" "cert_manager" {
   version          = "v1.13.2"
   create_namespace = true
   namespace        = "cert-manager"
-  values           = [templatefile("${path.module}/helm-values/cert-manager.yaml", {
-    cpu_request : var.cpu_request
-    memory_request : var.memory_request
-    memory_limit : var.memory_limit
-    webhook_cpu_request : var.webhook_cpu_request
-    webhook_memory_request : var.webhook_memory_request
-    webhook_memory_limit : var.webhook_memory_limit
-    caininjector_cpu_request : var.caininjector_cpu_request
-    caininjector_memory_request : var.caininjector_memory_request
-    caininjector_memory_limit : var.caininjector_memory_limit
-    startupapicheck_cpu_request : var.startupapicheck_cpu_request
-    startupapicheck_memory_request : var.startupapicheck_memory_request
-    startupapicheck_memory_limit : var.startupapicheck_memory_limit
-    enable_metrics : var.enable_metrics
-  })]
+  values = [
+    templatefile("${path.module}/helm-values/cert-manager.yaml", {
+      cpu_request : var.cpu_request
+      memory_request : var.memory_request
+      memory_limit : var.memory_limit
+      webhook_cpu_request : var.webhook_cpu_request
+      webhook_memory_request : var.webhook_memory_request
+      webhook_memory_limit : var.webhook_memory_limit
+      caininjector_cpu_request : var.caininjector_cpu_request
+      caininjector_memory_request : var.caininjector_memory_request
+      caininjector_memory_limit : var.caininjector_memory_limit
+      startupapicheck_cpu_request : var.startupapicheck_cpu_request
+      startupapicheck_memory_request : var.startupapicheck_memory_request
+      startupapicheck_memory_limit : var.startupapicheck_memory_limit
+      enable_metrics : var.enable_metrics
+    })
+  ]
 }
 
 resource "helm_release" "k8s_cluster_issuer" {
