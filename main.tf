@@ -8,6 +8,8 @@ resource "helm_release" "cert_manager" {
   namespace        = "cert-manager"
   values = [
     templatefile("${path.module}/helm-values/cert-manager.yaml", {
+      enable_metrics : var.enable_metrics
+      enable_servicemonitor : var.enable_servicemonitor
       cpu_request : var.cpu_request
       memory_request : var.memory_request
       memory_limit : var.memory_limit
@@ -20,7 +22,6 @@ resource "helm_release" "cert_manager" {
       startupapicheck_cpu_request : var.startupapicheck_cpu_request
       startupapicheck_memory_request : var.startupapicheck_memory_request
       startupapicheck_memory_limit : var.startupapicheck_memory_limit
-      enable_metrics : var.enable_metrics
     })
   ]
 }
