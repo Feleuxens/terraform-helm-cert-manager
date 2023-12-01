@@ -36,5 +36,5 @@ ingressShim:
 
 prometheus:
   enabled: ${enable_metrics}
-  servicemonitor:
-    enabled: ${enable_servicemonitor}
+  # servicemonitor:
+  #   enabled: ${enable_servicemonitor}
