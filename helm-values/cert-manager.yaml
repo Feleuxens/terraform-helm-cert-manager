@@ -1,0 +1,40 @@
+resources:
+  requests:
+    cpu: ${cpu_request}
+    memory: ${memory_request}
+  limits:
+    memory: ${memory_limit}
+
+webhook:
+  resources:
+    requests:
+      cpu: ${webhook_cpu_request}
+      memory: ${webhook_memory_request}
+    limits:
+      memory: ${webhook_memory_limit}
+
+cainjector:
+  resources:
+    requests:
+      cpu: ${caininjector_cpu_request}
+      memory: ${caininjector_memory_request}
+    limits:
+      memory: ${caininjector_memory_limit}
+
+startupapicheck:
+  resources:
+    requests:
+      cpu: ${startupapicheck_cpu_request}
+      memory: ${startupapicheck_memory_request}
+    limits:
+      memory: ${startupapicheck_memory_limit}
+
+installCRDs: true
+
+ingressShim:
+  defaultIssuerName: "letsencrypt-prod-dns01"
+
+prometheus:
+  enabled: ${enable_metrics}
+  servicemonitor:
+    enabled: ${enable_servicemonitor}
