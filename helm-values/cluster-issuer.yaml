@@ -35,4 +35,4 @@ resources:
       solvers:
       - http01:
           ingress:
-            class: "traefik"
+            class: "nginx"
